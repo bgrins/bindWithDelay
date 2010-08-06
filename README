@@ -1,0 +1,15 @@
+
+bindWithDelay jQuery plugin
+Open source code under MIT license: http://www.opensource.org/licenses/mit-license.php
+
+Author: Brian Grinstead
+http://github.com/bgrins/bindWithDelay
+http://briangrinstead.com/files/bindWithDelay/
+
+Usage: 
+	See http://api.jquery.com/bind/
+	.bindWithDelay( eventType, [ eventData ], handler(eventObject), timeout )
+
+Examples:
+	$("#foo").bindWithDelay("click", function(e) { }, 100);
+	$(window).bindWithDelay("resize", { optional: "eventData" }, callback, 1000);
