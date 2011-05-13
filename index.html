@@ -54,6 +54,7 @@
 				$(document).bind("mousemove", {when:'instant'}, updateResize);
 				$(document).bindWithDelay("mousemove", {when:'delay'}, updateResize, 1000);
 				$(window).bindWithDelay("mousemove", {when:'throttle'}, updateResize, 1000, true);
+				$(window).bindWithDelay("mousemove", function() {}, 1000, true);
 				
 				$(document).bind("click", {when:'instant'}, updateResize);
 				$(document).bindWithDelay("click", {when:'delay'}, updateResize, 1000);
