@@ -105,7 +105,8 @@ $("#element").<span class='key'>bindWithDelay</span>("click", function() {...}, 
 			</ul>
 			<h3>What is the difference between throttling and not?</h3>
 			<p>Imagine you are scrolling down a long page for 3 seconds and you have bindWithDelay running with a timeout of 1000ms.  By default, your event will only fire a second after you have completely finished scrolling.  If you have the optional throttling on, it will fire once per second during the scrolling - a total of 3 times instead of 1.  Move your mouse around in circles and look at the example below to see:</p>
-			<h3><a name="example">A Simple Example</a></h3>
+			<a name="example"></a>
+			<h3>A Simple Example</h3>
 			<p>As you have been on this page, it has been tracking how many times your browser's mousemove, click,
 			scroll, and resize events have fired (both with and without bindWithDelay). 
 			Go ahead and move your mouse around and click (try clicking a bunch of times in a row to see what it does)
