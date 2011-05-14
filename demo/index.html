@@ -10,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" media="screen, projection" href="styles.css" />
 
 		<script type='text/javascript' src='jquery-1.6.1.js'></script>
-		<script type='text/javascript' src='bindWithDelay.js'></script>
+		<script type='text/javascript' src='../bindWithDelay.js'></script>
 		
 		<script type='text/javascript'>
 			
@@ -81,8 +81,10 @@
 					Rather than implementing custom timeout code, just add in this plugin and simplify your code.
 				</li>
 				<li><strong>How do I use it in code?</strong>
-					It works with existing code that uses the <a href='http://api.jquery.com/bind/'>bind()</a> code.
-					Add a final parameter (timeout in milliseconds).
+<pre>Pretty much the same as <a href='http://api.jquery.com/bind/'>http://api.jquery.com/bind/</a>
+element.bindWithDelay( eventType, [ eventData ], handler(eventObject), timeout, throttle )</pre>
+					It works with existing code that uses the bind() function.
+					Just add an extra parameter (timeout in milliseconds), and an optional boolean value if you would like to enable throttling.
 <pre>// If your code that uses bind(), just add in a timeout parameter.
 $("#element").bind("click", function() {...});
 $("#element").<span class='key'>bindWithDelay</span>("click", function() {...}, <span class='key'>1000</span>);
@@ -101,6 +103,8 @@ $("#element").<span class='key'>bindWithDelay</span>("click", function() {...}, 
 					<a href="http://github.com/bgrins/bindWithDelay/blob/master/bindWithDelay.js">http://github.com/bgrins/bindWithDelay/blob/master/bindWithDelay.js</a>
 				</li>
 			</ul>
+			<h3>What is the difference between throttling and not?</h3>
+			<p>Imagine you are scrolling down a long page for 3 seconds and you have bindWithDelay running with a timeout of 1000ms.  By default, your event will only fire a second after you have completely finished scrolling.  If you have the optional throttling on, it will fire once per second during the scrolling - a total of 3 times instead of 1.  Move your mouse around in circles and look at the example below to see:</p>
 			<h3>A Simple Example</h3>
 			<p>As you have been on this page, it has been tracking how many times your browser's mousemove, click,
 			scroll, and resize events have fired (both with and without bindWithDelay). 
