@@ -1,8 +1,10 @@
 /* 
 bindWithDelay jQuery plugin
 Author: Brian Grinstead
+MIT license: http://www.opensource.org/licenses/mit-license.php
+
 http://github.com/bgrins/bindWithDelay
-Open source code under MIT license: http://www.opensource.org/licenses/mit-license.php
+http://briangrinstead.com/files/bindWithDelay
 
 Usage: 
 	See http://api.jquery.com/bind/
