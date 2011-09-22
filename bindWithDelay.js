@@ -39,6 +39,12 @@ $.fn.bindWithDelay = function( type, data, fn, timeout, throttle ) {
 		if (!throttle || !wait) { wait = setTimeout(throttler, timeout); }
 	}
 	
+	// Make cb and original fn have same guid,
+	// So cb can be removed with fn as the parameter to unbind    
+	if ( $.guid ) {
+		cb.guid = fn.guid = (fn.guid || $.guid++);
+	}
+	
 	return this.bind(type, data, cb);
 }
 })(jQuery);
