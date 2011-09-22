@@ -26,6 +26,9 @@ $.fn.bindWithDelay = function( type, data, fn, timeout, throttle ) {
 		fn = data;
 		data = undefined;
 	}
+
+	// Allow delayed function to be removed with fn in unbind function
+	fn.guid = fn.guid || ($.guid && $.guid++);
 	
 	function cb() {
 		var e = $.extend(true, { }, arguments[0]);
@@ -38,12 +41,8 @@ $.fn.bindWithDelay = function( type, data, fn, timeout, throttle ) {
 		if (!throttle) { clearTimeout(wait); wait = null; }
 		if (!wait) { wait = setTimeout(throttler, timeout); }
 	}
-	
-	// Make cb and original fn have same guid,
-	// So cb can be removed with fn as the parameter to unbind    
-	if ( $.guid ) {
-		cb.guid = fn.guid = (fn.guid || $.guid++);
-	}
+	 
+	cb.guid = fn.guid;
 	
 	return this.bind(type, data, cb);
 }
