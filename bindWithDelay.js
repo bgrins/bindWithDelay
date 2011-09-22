@@ -35,8 +35,8 @@ $.fn.bindWithDelay = function( type, data, fn, timeout, throttle ) {
 			fn.apply(ctx, [e]);
 		};
 		
-		if (!throttle) { clearTimeout(wait); }
-		if (!throttle || !wait) { wait = setTimeout(throttler, timeout); }
+		if (!throttle) { clearTimeout(wait); wait = null; }
+		if (!wait) { wait = setTimeout(throttler, timeout); }
 	}
 	
 	// Make cb and original fn have same guid,
