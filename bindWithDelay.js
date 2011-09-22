@@ -19,7 +19,6 @@ Examples:
 (function($) {
 $.fn.bindWithDelay = function( type, data, fn, timeout, throttle ) {
 	var wait = null;
-	var that = this;
 	
 	if ( $.isFunction( data ) ) {
 		throttle = timeout;
@@ -30,9 +29,10 @@ $.fn.bindWithDelay = function( type, data, fn, timeout, throttle ) {
 	
 	function cb() {
 		var e = $.extend(true, { }, arguments[0]);
+		var ctx = this;
 		var throttler = function() {
 			wait = null;
-			fn.apply(that, [e]);
+			fn.apply(ctx, [e]);
 		};
 		
 		if (!throttle) { clearTimeout(wait); }
