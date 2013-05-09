@@ -1,19 +1,17 @@
-
 <!DOCTYPE html>
-
 <html>
 	<head>
 		<title>bindWithDelay Demo</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="shortcut icon" href="favicon.ico">
-		
-		<link rel="stylesheet" type="text/css" media="screen, projection" href="styles.css" />
 
-		<script type='text/javascript' src='jquery-1.6.1.js'></script>
-		<script type='text/javascript' src='../bindWithDelay.js'></script>
-		
+		<link rel="stylesheet" type="text/css" media="screen, projection" href="demo/styles.css" />
+
+		<script type='text/javascript' src='demo/jquery-1.9.1.js'></script>
+		<script type='text/javascript' src='bindWithDelay.js'></script>
+
 		<script type='text/javascript'>
-			
+
 			var counters = {
 				resize: {
 					instant: 0,
@@ -36,7 +34,7 @@
 					throttle: 0
 				}
 			}
-			
+
 			function updateResize(e) {
 				counters[e.type][e.data.when]++;
 				for (var i in counters) {
@@ -45,28 +43,28 @@
 					}
 				}
 			}
-			
+
 			$(function() {
 				$(window).bind("resize", {when:'instant'}, updateResize);
 				$(window).bindWithDelay("resize", {when:'delay'}, updateResize, 1000);
 				$(window).bindWithDelay("resize", {when:'throttle'}, updateResize, 1000, true);
-				
+
 				$(document).bind("mousemove", {when:'instant'}, updateResize);
 				$(document).bindWithDelay("mousemove", {when:'delay'}, updateResize, 1000);
 				$(window).bindWithDelay("mousemove", {when:'throttle'}, updateResize, 1000, true);
 				$(window).bindWithDelay("mousemove", function() {}, 1000, true);
-				
+
 				$(document).bind("click", {when:'instant'}, updateResize);
 				$(document).bindWithDelay("click", {when:'delay'}, updateResize, 1000);
 				$(window).bindWithDelay("click", {when:'throttle'}, updateResize, 1000, true);
-				
+
 				$(document).bind("scroll", {when:'instant'}, updateResize);
 				$(document).bindWithDelay("scroll", {when:'delay'}, updateResize, 1000);
 				$(window).bindWithDelay("scroll", {when:'throttle'}, updateResize, 1000, true);
-				
+
 			});
 		</script>
-		
+
 	</head>
 	<body>
 		<div id="header">
@@ -76,8 +74,8 @@
 			<h2>bindWithDelay jQuery Plugin <a href='#example' style='float:right;'>(see example)</a></h2>
 			<h3>The Basics</h3>
 			<ul class='basics'>
-				<li><strong>What does bindWithDelay do?</strong> 
-					It prevents a function call from happening EVERY time an event is fired from the browser.  
+				<li><strong>What does bindWithDelay do?</strong>
+					It prevents a function call from happening EVERY time an event is fired from the browser.
 					Rather than implementing custom timeout code, just add in this plugin and simplify your code.
 				</li>
 				<li><strong>How do I use it in code?</strong>
@@ -97,7 +95,7 @@ $("#element").<span class='key'>bindWithDelay</span>("click", function() {...}, 
 // (called "throttling"), then put a true in for the throttle parameter:
 $("#element").<span class='key'>bindWithDelay</span>("click", function() {...}, <span class='key'>1000</span>, true);
 </pre>
-					
+
 				</li>
 				<li><strong>Where is the source code?</strong> <br />
 					<a href="http://github.com/bgrins/bindWithDelay/blob/master/bindWithDelay.js">http://github.com/bgrins/bindWithDelay/blob/master/bindWithDelay.js</a>
@@ -108,10 +106,10 @@ $("#element").<span class='key'>bindWithDelay</span>("click", function() {...}, 
 			<a name="example"></a>
 			<h3>A Simple Example</h3>
 			<p>As you have been on this page, it has been tracking how many times your browser's mousemove, click,
-			scroll, and resize events have fired (both with and without bindWithDelay). 
+			scroll, and resize events have fired (both with and without bindWithDelay).
 			Go ahead and move your mouse around and click (try clicking a bunch of times in a row to see what it does)
 			, or resize your browser to get a look at how it works.</p>
-			
+
 			<div class='result-panel'>
 				<pre>$(document).bind("<span class='key'>mousemove</span>") has been called: <span id='result-mousemove-instant'>0</span> times.</pre>
 				<pre>$(document).bindWithDelay("<span class='key'>mousemove</span>", 1000) has been called: <span id='result-mousemove-delay'>0</span> times.</pre>
@@ -128,15 +126,15 @@ $("#element").<span class='key'>bindWithDelay</span>("click", function() {...}, 
 				<pre>$(document).bindWithDelay("<span class='key'>scroll</span>", 1000, true) has been called: <span id='result-scroll-throttle'>0</span> times.</pre>
 			</div>
 			<div class='result-panel'>
-				<pre>$(window).bind("<span class='key'>resize</span>") has been called: <span id='result-resize-instant'>0</span> times.</pre> 
+				<pre>$(window).bind("<span class='key'>resize</span>") has been called: <span id='result-resize-instant'>0</span> times.</pre>
 				<pre>$(window).bindWithDelay("<span class='key'>resize</span>", 1000) has been called: <span id='result-resize-delay'>0</span> times.</pre>
 				<pre>$(window).bindWithDelay("<span class='key'>resize</span>", 1000, true) has been called: <span id='result-resize-throttle'>0</span> times.</pre>
 			</div>
-			
+
 		</div>
-		
+
 		<div id="footer">
-		
+
 		</div>
 	</body>
 </html>
