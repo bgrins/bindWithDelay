@@ -51,7 +51,6 @@ $.fn.bindWithDelay = function( type, data, fn, timeout, throttle ) {
 
         $(this).bind(type, data, cb);
     });
+};
 
-
-}
 })(jQuery);
