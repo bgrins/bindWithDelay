@@ -52,4 +52,8 @@ $.fn.onDelay = function(events, selector, data, handler, timeout, throttle) {
     });
 };
 
+$.fn.onBind = $.fn.bindWithDelay = function(events, data, handler, timeout, throttle) {
+	return $(this).onDelay(events, data, handler, timeout, throttle);
+};
+
 })(jQuery);
