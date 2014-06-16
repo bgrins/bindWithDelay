@@ -8,7 +8,7 @@
 		<link rel="stylesheet" type="text/css" media="screen, projection" href="demo/styles.css" />
 
 		<script type='text/javascript' src='demo/jquery-1.9.1.js'></script>
-		<script type='text/javascript' src='onDelay.js'></script>
+		<script type='text/javascript' src='bindWithDelay.js'></script>
 
 		<script type='text/javascript'>
 
@@ -45,22 +45,22 @@
 			}
 
 			$(function() {
-				$(window).on("resize", {when:'instant'}, updateResize);
-				$(window).onDelay("resize", {when:'delay'}, updateResize, 1000);
-				$(window).onDelay("resize", {when:'throttle'}, updateResize, 1000, true);
+				$(window).bind("resize", {when:'instant'}, updateResize);
+				$(window).bindWithDelay("resize", {when:'delay'}, updateResize, 1000);
+				$(window).bindWithDelay("resize", {when:'throttle'}, updateResize, 1000, true);
 
-				$(document).on("mousemove", {when:'instant'}, updateResize);
-				$(document).onDelay("mousemove", {when:'delay'}, updateResize, 1000);
-				$(window).onDelay("mousemove", {when:'throttle'}, updateResize, 1000, true);
-				$(window).onDelay("mousemove", function() {}, 1000, true);
+				$(document).bind("mousemove", {when:'instant'}, updateResize);
+				$(document).bindWithDelay("mousemove", {when:'delay'}, updateResize, 1000);
+				$(window).bindWithDelay("mousemove", {when:'throttle'}, updateResize, 1000, true);
+				$(window).bindWithDelay("mousemove", function() {}, 1000, true);
 
-				$(document).on("click", {when:'instant'}, updateResize);
-				$(document).onDelay("click", {when:'delay'}, updateResize, 1000);
-				$(window).onDelay("click", {when:'throttle'}, updateResize, 1000, true);
+				$(document).bind("click", {when:'instant'}, updateResize);
+				$(document).bindWithDelay("click", {when:'delay'}, updateResize, 1000);
+				$(window).bindWithDelay("click", {when:'throttle'}, updateResize, 1000, true);
 
-				$(document).on("scroll", {when:'instant'}, updateResize);
-				$(document).onDelay("scroll", {when:'delay'}, updateResize, 1000);
-				$(window).onDelay("scroll", {when:'throttle'}, updateResize, 1000, true);
+				$(document).bind("scroll", {when:'instant'}, updateResize);
+				$(document).bindWithDelay("scroll", {when:'delay'}, updateResize, 1000);
+				$(window).bindWithDelay("scroll", {when:'throttle'}, updateResize, 1000, true);
 
 			});
 		</script>
