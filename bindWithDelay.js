@@ -12,19 +12,31 @@ Usage:
 
 Examples:
     $("#foo").bindWithDelay("click", function(e) { }, 100);
+    $("#foo").bindWithDelay("click", '.bar', callback, 1000, true);
     $(window).bindWithDelay("resize", { optional: "eventData" }, callback, 1000);
     $(window).bindWithDelay("resize", callback, 1000, true);
 */
 
 (function($) {
 
-$.fn.bindWithDelay = function( type, data, fn, timeout, throttle ) {
+$.fn.bindWithDelay = function( type, selector, data, fn, timeout, throttle ) {
 
-    if ( $.isFunction( data ) ) {
+    if ( $.isFunction( selector ) ) {
+        throttle = fn;
+        timeout = data;
+        fn = selector;
+        data = undefined;
+        selector = undefined;
+    } else if ( $.isFunction( data ) ) {
         throttle = timeout;
         timeout = fn;
         fn = data;
-        data = undefined;
+        if ( typeof selector === "string" ) {
+            data = undefined;
+        } else {
+            data = selector;
+            selector = undefined;
+        }
     }
 
     // Allow delayed function to be removed with fn in unbind function
@@ -49,7 +61,12 @@ $.fn.bindWithDelay = function( type, data, fn, timeout, throttle ) {
 
         cb.guid = fn.guid;
 
-        $(this).bind(type, data, cb);
+        if (selector) {
+            $(this).on(type, selector, data, cb);
+        } else {
+            $(this).on(type, data, cb);
+        }
+
     });
 };
 
